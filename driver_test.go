@@ -1,4 +1,4 @@
-package zap
+package sli2zap
 
 import (
 	"testing"

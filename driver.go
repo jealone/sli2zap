@@ -5,7 +5,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func registerZap(logger *zap.Logger) {
+func RegisterZap(logger *zap.Logger) {
 	sli4go.InitLogger(&wrapperSugar{logger.Sugar()})
 }
 

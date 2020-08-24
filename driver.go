@@ -9,8 +9,28 @@ func RegisterZap(logger *zap.Logger) {
 	sli4go.InitLogger(&wrapperSugar{logger.Sugar()})
 }
 
+type logger interface {
+	sli4go.Flusher
+	sli4go.FormatLogger
+	sli4go.LineLogger
+	sli4go.InstantLogger
+	sli4go.PrintLogger
+}
+
 type wrapperSugar struct {
 	*zap.SugaredLogger
+}
+
+func (l *wrapperSugar) Print(i ...interface{}) {
+	l.Error(i...)
+}
+
+func (l *wrapperSugar) Printf(s string, i ...interface{}) {
+	l.Errorf(s, i...)
+}
+
+func (l *wrapperSugar) Println(i ...interface{}) {
+	l.Errorln(i...)
 }
 
 func (l *wrapperSugar) Flush() error {

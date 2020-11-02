@@ -1,0 +1,22 @@
+logfile: logs/error.log
+level: Debug
+trace: true
+trace_skip: 2
+# 单位是MB
+max_size: 1
+max_backups: 10
+# 单位是day
+max_age: 7
+compress: false
+encoder:
+#  timeKey: ts
+#  levelKey: level
+#  nameKey: logger
+#  callerKey: caller
+  messageKey: msg
+#  stacktraceKey: stacktrace
+#  levelEncoder: capital
+#  timeEncoder: ISO8601
+#  durationEncoder: ms
+#  callerEncoder: full
+#  nameEncoder: full

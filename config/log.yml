@@ -3,7 +3,7 @@ level: Debug
 trace: true
 trace_skip: 2
 # 单位是MB
-max_size: 1
+max_size: 1000
 max_backups: 10
 # 单位是day
 max_age: 7

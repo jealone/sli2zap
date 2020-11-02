@@ -91,7 +91,7 @@ func NewProductionEncoderConfig() EncoderConfig {
 		LineEnding:     zapcore.DefaultLineEnding,
 		EncodeLevel:    zapcore.CapitalLevelEncoder,
 		EncodeTime:     zapcore.ISO8601TimeEncoder,
-		EncodeDuration: zapcore.MillisDurationEncoder,
+		EncodeDuration: zapcore.SecondsDurationEncoder,
 		EncodeCaller:   zapcore.ShortCallerEncoder,
 	}
 }
@@ -115,7 +115,7 @@ func (c *LogConfig) GetEncoderConfig() EncoderConfig {
 	}
 
 	if nil == enc.EncodeDuration {
-		enc.EncodeDuration = zapcore.MillisDurationEncoder
+		enc.EncodeDuration = zapcore.SecondsDurationEncoder
 	}
 
 	if nil == enc.EncodeCaller {

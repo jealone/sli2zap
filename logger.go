@@ -247,6 +247,21 @@ type Notify interface {
 	Broadcast()
 }
 
+type Decoder interface {
+	Decode(v interface{}) (err error)
+}
+
+func DecodeLogger(dec Decoder, options ...Option) (error, *Logger) {
+	conf := &LogConfig{}
+	err := dec.Decode(conf)
+
+	if nil != err {
+		return err, nil
+	}
+
+	return nil, NewLogger(conf, options...)
+}
+
 func NewLogger(config *LogConfig, options ...Option) *Logger {
 
 	initDaemon()
